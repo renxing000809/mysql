@@ -54,9 +54,6 @@ class Database:
         except Exception as e:
             print(e)
             self.con.rollback()
-        finally:
-            self.cur.close()
-            self.con.close()
 
     def add_teacher(self, num, name, passwd, tele):
         """
@@ -158,6 +155,11 @@ class Database:
             self.con.close()
 
     def delete_course(self, num):
+        """
+        根据课程号删除一个课程信息
+        :param num: 课程号
+        :return:
+        """
         try:
             sql = 'delete from dbw.course where dbw.course.id = %s'
             data = [num]
